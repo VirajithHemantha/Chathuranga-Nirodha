@@ -2,16 +2,17 @@ import React, { useCallback, useEffect, useRef, useState, useMemo } from "react"
 import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
 import { Sparkles, MapPin, ChevronDown, Volume2, VolumeX, X, Hotel, MailOpen, Heart, Stars } from "lucide-react";
 import { useInView } from 'react-intersection-observer';
+import EnvelopeOpener from "./components/EnvelopeOpener";
 
 /**
- * Premium Sri Lankan Wedding Invitation Theme
- * Names: Niwarthana & Thenuka
- * Background: Cream/Sand
- * Accents: Green/Brown
+ * Premium Sri Lankan Homecoming Invitation Theme
+ * Names: Kaveen & Samithri
+ * Background: Cream/Red
+ * Accents: Red/Gold
  */
 
-const brideGroomImage = "/DSC00263_1.jpg.jpeg";
-const secondaryImage = "/DSC05289_1.jpg.jpeg";
+const brideGroomImage = "/images/ChatGPT Image Apr 24, 2026, 10_27_41 PM.png";
+const secondaryImage = "/images/ChatGPT Image Apr 24, 2026, 10_27_41 PM.png";
 const backgroundMusic = "/ama_anjana_flute.mp3";
 const googleScriptUrl = import.meta.env.VITE_GOOGLE_SCRIPT_URL?.trim() || "";
 
@@ -49,7 +50,7 @@ function FloatingPetals() {
       return;
     }
 
-    const colors = ["#ff0080", "#ff8c00", "#ffd700", "#00ffff", "#8a2be2", "#ffffff"];
+    const colors = ["#ff0080", "#dc2626", "#ef4444", "#fecaca", "#991b1b", "#ffffff"];
     const petalCount = isMobile ? 15 : 25;
     const newPetals = Array.from({ length: petalCount }).map((_, i) => ({
       id: i,
@@ -115,7 +116,7 @@ function CountdownTimer() {
     triggerOnce: true,
   });
 
-  const targetDate = useMemo(() => new Date("May 15, 2026 09:40:00").getTime(), []);
+  const targetDate = useMemo(() => new Date("May 15, 2026 17:00:00").getTime(), []);
 
   const getTimeLeft = (): { days: number; hours: number; minutes: number; seconds: number } => {
     const now = new Date().getTime();
@@ -161,7 +162,7 @@ function CountdownTimer() {
   return (
     <section
       ref={ref}
-      className="relative py-24 md:py-36 bg-gradient-to-br from-[#0d3f38] via-[#045e54] to-[#0d3f38] flex flex-col items-center overflow-hidden z-20"
+      className="relative py-24 md:py-36 bg-gradient-to-br from-[#5a0000] via-[#991b1b] to-[#5a0000] flex flex-col items-center overflow-hidden z-20"
     >
       {/* Texture & Glow Layer */}
       <div className="absolute inset-0 opacity-[0.15] bg-[url('https://www.transparenttextures.com/patterns/natural-paper.png')] pointer-events-none z-0" />
@@ -416,8 +417,8 @@ function AccommodationModal({ isOpen, onClose }: { isOpen: boolean; onClose: () 
       >
         <div className="p-6 border-b border-slate-100 flex items-center justify-between bg-[#fcfcf0]">
           <div>
-            <h2 className="font-cinzel text-xl md:text-2xl text-[#045e54] font-bold">Accommodation Rates</h2>
-            <p className="text-[10px] uppercase tracking-widest text-[#045e54] mt-1">Saminro Grand Palace, Makola</p>
+            <h2 className="font-cinzel text-xl md:text-2xl text-[#991b1b] font-bold">Accommodation Rates</h2>
+            <p className="text-[10px] uppercase tracking-widest text-[#991b1b] mt-1">Tranquil Hotel, Weliweriya</p>
           </div>
           <button onClick={onClose} className="p-2 hover:bg-slate-100 rounded-full transition-colors">
             <X size={24} className="text-slate-400" />
@@ -428,14 +429,14 @@ function AccommodationModal({ isOpen, onClose }: { isOpen: boolean; onClose: () 
           <div className="space-y-12">
             <div>
               <div className="flex items-center gap-4 mb-8">
-                <div className="h-px flex-1 bg-[#045e54]/30" />
-                <h3 className="font-playball text-3xl text-[#045e54]">Honeymoon Room Rates</h3>
-                <div className="h-px flex-1 bg-[#045e54]/30" />
+                <div className="h-px flex-1 bg-[#991b1b]/30" />
+                <h3 className="font-playball text-3xl text-[#991b1b]">Honeymoon Room Rates</h3>
+                <div className="h-px flex-1 bg-[#991b1b]/30" />
               </div>
               <div className="grid md:grid-cols-2 gap-6">
                 {honeymoonRates.map((plan) => (
-                  <div key={plan.plan} className="bg-white p-6 rounded-xl border border-[#48b0a3]/30 shadow-sm">
-                    <h4 className="font-cinzel text-sm font-bold text-[#045e54] mb-4 border-b border-[#48b0a3]/20 pb-2">{plan.plan}</h4>
+                  <div key={plan.plan} className="bg-white p-6 rounded-xl border border-[#f87171]/30 shadow-sm">
+                    <h4 className="font-cinzel text-sm font-bold text-[#991b1b] mb-4 border-b border-[#f87171]/20 pb-2">{plan.plan}</h4>
                     <div className="space-y-3">
                       {plan.rooms.map((room) => (
                         <div key={room.name} className="flex justify-between items-center gap-4">
@@ -443,7 +444,7 @@ function AccommodationModal({ isOpen, onClose }: { isOpen: boolean; onClose: () 
                             <p className="text-xs font-bold text-slate-700">{room.name}</p>
                             <p className="text-[10px] text-slate-400">{room.view}</p>
                           </div>
-                          <p className="text-xs font-bold text-[#045e54] whitespace-nowrap">{room.rate}</p>
+                          <p className="text-xs font-bold text-[#991b1b] whitespace-nowrap">{room.rate}</p>
                         </div>
                       ))}
                     </div>
@@ -455,14 +456,14 @@ function AccommodationModal({ isOpen, onClose }: { isOpen: boolean; onClose: () 
 
             <div>
               <div className="flex items-center gap-4 mb-8">
-                <div className="h-px flex-1 bg-[#045e54]/30" />
-                <h3 className="font-playball text-3xl text-[#045e54]">Double Room Rates</h3>
-                <div className="h-px flex-1 bg-[#045e54]/30" />
+                <div className="h-px flex-1 bg-[#991b1b]/30" />
+                <h3 className="font-playball text-3xl text-[#991b1b]">Double Room Rates</h3>
+                <div className="h-px flex-1 bg-[#991b1b]/30" />
               </div>
               <div className="grid md:grid-cols-2 gap-6">
                 {doubleRates.map((plan) => (
-                  <div key={plan.plan} className="bg-white p-6 rounded-xl border border-[#48b0a3]/30 shadow-sm">
-                    <h4 className="font-cinzel text-sm font-bold text-[#045e54] mb-4 border-b border-[#48b0a3]/20 pb-2">{plan.plan}</h4>
+                  <div key={plan.plan} className="bg-white p-6 rounded-xl border border-[#f87171]/30 shadow-sm">
+                    <h4 className="font-cinzel text-sm font-bold text-[#991b1b] mb-4 border-b border-[#f87171]/20 pb-2">{plan.plan}</h4>
                     <div className="space-y-3">
                       {plan.rooms.map((room) => (
                         <div key={room.name} className="flex justify-between items-center gap-4">
@@ -470,7 +471,7 @@ function AccommodationModal({ isOpen, onClose }: { isOpen: boolean; onClose: () 
                             <p className="text-xs font-bold text-slate-700">{room.name}</p>
                             <p className="text-[10px] text-slate-400">{room.view}</p>
                           </div>
-                          <p className="text-xs font-bold text-[#045e54] whitespace-nowrap">{room.rate}</p>
+                          <p className="text-xs font-bold text-[#991b1b] whitespace-nowrap">{room.rate}</p>
                         </div>
                       ))}
                     </div>
@@ -482,15 +483,15 @@ function AccommodationModal({ isOpen, onClose }: { isOpen: boolean; onClose: () 
             <div className="grid md:grid-cols-3 gap-6 pt-6 border-t border-slate-100">
               <div className="text-center">
                 <p className="text-[10px] uppercase font-bold text-slate-400 tracking-widest mb-1">Check In</p>
-                <p className="font-cinzel text-xl text-[#045e54]">2:00 PM</p>
+                <p className="font-cinzel text-xl text-[#991b1b]">2:00 PM</p>
               </div>
               <div className="text-center">
                 <p className="text-[10px] uppercase font-bold text-slate-400 tracking-widest mb-1">Check Out</p>
-                <p className="font-cinzel text-xl text-[#045e54]">12:00 PM</p>
+                <p className="font-cinzel text-xl text-[#991b1b]">12:00 PM</p>
               </div>
               <div className="text-center">
                 <p className="text-[10px] uppercase font-bold text-slate-400 tracking-widest mb-1">Availability</p>
-                <p className="font-cinzel text-sm text-[#045e54] leading-tight">Max 16 Rooms Available</p>
+                <p className="font-cinzel text-sm text-[#991b1b] leading-tight">Max 16 Rooms Available</p>
               </div>
             </div>
           </div>
@@ -714,32 +715,10 @@ export default function WeddingInvitation() {
 
       <AnimatePresence mode="wait">
         {!isOpened ? (
-          <motion.div
-            key="video-intro"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0, transition: { duration: 1 } }}
-            onClick={() => {
-              setIsOpened(true);
-              void unlockAudioFromGesture();
-            }}
-            className="fixed inset-0 z-[200] bg-black flex items-center justify-center overflow-hidden cursor-pointer"
-          >
-            <video
-              autoPlay
-              muted
-              playsInline
-              onEnded={() => {
-                setIsOpened(true);
-                void unlockAudioFromGesture();
-              }}
-              className="absolute inset-0 w-full h-full object-cover"
-            >
-              <source src="/intro_video.mp4" type="video/mp4" />
-            </video>
-
-            <div className="absolute inset-0 z-10 bg-black/5" />
-          </motion.div>
+          <EnvelopeOpener onOpen={() => {
+            setIsOpened(true);
+            void unlockAudioFromGesture();
+          }} />
         ) : (
           <motion.div
             key="website-stage"
@@ -764,7 +743,7 @@ export default function WeddingInvitation() {
               </div>
             </motion.button>
 
-            <section className="relative z-10 flex min-h-[95dvh] w-full items-center justify-center overflow-hidden bg-gradient-to-br from-[#0d3f38] via-[#045e54] to-[#0d3f38] px-4 py-12 sm:px-8 md:min-h-[100dvh]">
+            <section className="relative z-10 flex min-h-[95dvh] w-full items-center justify-center overflow-hidden bg-gradient-to-br from-[#5a0000] via-[#991b1b] to-[#5a0000] px-4 py-12 sm:px-8 md:min-h-[100dvh]">
               {/* Decorative background elements */}
               <div className="absolute inset-0 overflow-hidden pointer-events-none">
                 <div className="absolute inset-0 opacity-[0.15] bg-[url('https://www.transparenttextures.com/patterns/natural-paper.png')] pointer-events-none z-0" />
@@ -830,14 +809,14 @@ export default function WeddingInvitation() {
                   Are You Ready?
                 </motion.p>
 
-                <h1 className="mt-6 text-center font-alex text-[2.8rem] leading-[1.1] text-[#0d3f38] drop-shadow-[0_2px_8px_rgba(0,0,0,0.05)] sm:text-[4.5rem] md:text-[6.5rem] lg:text-[7.5rem]">
-                  <span className="text-shimmer block">Niwarthana</span>
+                <h1 className="mt-6 text-center font-alex text-[2.8rem] leading-[1.1] text-[#5a0000] drop-shadow-[0_2px_8px_rgba(0,0,0,0.05)] sm:text-[4.5rem] md:text-[6.5rem] lg:text-[7.5rem]">
+                  <span className="text-shimmer block">Kaveen</span>
                   <div className="my-2 flex items-center justify-center gap-4">
-                    <div className="h-px w-16 bg-[#0d3f38]/20" />
+                    <div className="h-px w-16 bg-[#5a0000]/20" />
                     <span className="font-serif text-3xl italic text-[#d4af37] sm:text-4xl md:text-5xl">&amp;</span>
-                    <div className="h-px w-16 bg-[#0d3f38]/20" />
+                    <div className="h-px w-16 bg-[#5a0000]/20" />
                   </div>
-                  <span className="text-shimmer block">Thenuka</span>
+                  <span className="text-shimmer block">Samithri</span>
                 </h1>
 
                 <motion.div
@@ -846,7 +825,7 @@ export default function WeddingInvitation() {
                   transition={{ delay: 1, duration: 1 }}
                   className="mt-8 mb-10 text-center"
                 >
-                  <p className="font-cinzel text-xl text-[#0d3f38] tracking-[0.2em]">MAY 15 | 2026</p>
+                  <p className="font-cinzel text-xl text-[#5a0000] tracking-[0.2em]">MAY 15 | 2026</p>
                 </motion.div>
 
                 <motion.p
@@ -860,9 +839,9 @@ export default function WeddingInvitation() {
 
                 <div className="mx-auto mt-10 grid max-w-4xl gap-3 sm:grid-cols-3">
                   {[
-                    { label: "Ceremony", value: "Poruwa 9.40 AM" },
-                    { label: "Venue", value: "Saminro Grand Palace" },
-                    { label: "Reception", value: "9.30 AM - 4.00 PM" }
+                    { label: "Homecoming", value: "May 15th 2026" },
+                    { label: "Venue", value: "Tranquil Hotel" },
+                    { label: "Time", value: "5.00 P.M. onwards" }
                   ].map((item, i) => (
                     <motion.div
                       key={item.label}
@@ -872,7 +851,7 @@ export default function WeddingInvitation() {
                       className="group relative rounded-3xl border border-[#d4af37]/15 bg-white/40 p-4 text-center backdrop-blur-sm transition-all hover:bg-white/70 hover:border-[#d4af37]/30 shadow-sm"
                     >
                       <p className="text-[8px] uppercase tracking-[0.25em] text-[#d4af37] font-bold mb-1">{item.label}</p>
-                      <p className="font-cinzel text-xs text-[#0d3f38] tracking-wider sm:text-sm">{item.value}</p>
+                      <p className="font-cinzel text-xs text-[#5a0000] tracking-wider sm:text-sm">{item.value}</p>
                     </motion.div>
                   ))}
                 </div>
@@ -940,23 +919,22 @@ export default function WeddingInvitation() {
                   className="flex flex-col items-center mb-16"
                 >
                   <p className="tracking-[0.4em] md:tracking-[0.7em] text-[#d4af37] text-[9px] md:text-[12px] uppercase font-montserrat font-bold drop-shadow-sm">
-                    TOGETHER WE REQUEST THE HONOUR OF YOUR PRESENCE
+                    MR. &amp; MRS. GUNATHILAKA REQUEST THE HONOUR OF YOUR PRESENCE
                   </p>
                   <p className="text-slate-500 font-serif text-[15px] md:text-[22px] italic tracking-wide mt-6 mb-2 uppercase">
-                    TO CELEBRATE THE WEDDING OF THEIR CHILDREN
+                    TO CELEBRATE THE HOMECOMING OF THEIR SON
                   </p>
                   <div className="pt-4 pb-2 w-full flex justify-center">
-                    <span className="text-[#0d3f38] font-alex text-[2.8rem] md:text-6xl block my-2 drop-shadow-sm leading-tight text-center">
-                      {guestName || "MR. / MR. & MRS. / MS. / FAMILY"}
+                    <span className="text-[#5a0000] font-alex text-[2.8rem] md:text-6xl block my-2 drop-shadow-sm leading-tight text-center">
+                      {guestName || "MR.& MRS/ MISS/MR/MRS/ FAMILY"}
                     </span>
                   </div>
                   <div className="h-[0.5px] w-24 bg-[#d4af37]/50 mt-6" />
                 </motion.div>
 
                 <div className="relative w-full flex flex-col md:flex-row items-center justify-center gap-16 lg:gap-32 mt-4 mb-16">
-                  {/* Premium Dual Image Layout */}
+                  {/* Premium Single Image Layout */}
                   <div className="relative w-[300px] md:w-[450px] aspect-[3/4] flex-shrink-0 mb-12 md:mb-0">
-                    {/* Main Portrait */}
                     <motion.div
                       initial={{ opacity: 0, scale: 0.95 }}
                       whileInView={{ opacity: 1, scale: 1 }}
@@ -966,7 +944,7 @@ export default function WeddingInvitation() {
                     >
                       <img
                         src={brideGroomImage}
-                        alt="Niwarthana & Thenuka"
+                        alt="Kaveen & Samithri"
                         loading="lazy"
                         decoding="async"
                         width={450}
@@ -974,31 +952,13 @@ export default function WeddingInvitation() {
                         className="w-full h-full object-cover transition-all duration-1000 group-hover:scale-105"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
+                      
+                      {/* Decorative frame inner line */}
+                      <div className="absolute inset-4 border border-white/30 pointer-events-none rounded-lg" />
                     </motion.div>
-
-                    {/* Overlapping Secondary Image - 'Cute' feel */}
-                    <motion.div
-                      initial={{ opacity: 0, x: -30, y: 30, rotate: -5 }}
-                      whileInView={{ opacity: 1, x: 0, y: 0, rotate: -8 }}
-                      transition={{ delay: 0.8, duration: 1.2 }}
-                      viewport={{ once: true }}
-                      whileHover={{ rotate: -5, scale: 1.05 }}
-                      className="absolute -bottom-6 -left-6 md:-bottom-10 md:-left-12 w-[60%] aspect-[4/5] bg-white p-2 rounded-xl shadow-2xl z-20 border border-[#d4af37]/30"
-                    >
-                      <img
-                        src={secondaryImage}
-                        alt="The Couple"
-                        loading="lazy"
-                        decoding="async"
-                        width={300}
-                        height={400}
-                        className="w-full h-full object-cover rounded-lg"
-                      />
-                      {/* Floating Sparkle on the corner for 'Premium' feel */}
-                      <div className="absolute -top-3 -right-3 text-[#d4af37] animate-pulse">
-                        <Sparkles size={20} />
-                      </div>
-                    </motion.div>
+                    
+                    {/* Background glow ornament */}
+                    <div className="absolute -inset-4 bg-[#d4af37]/10 blur-2xl -z-10 rounded-3xl" />
                   </div>
 
                   {/* Minimalist Names side */}
@@ -1011,7 +971,7 @@ export default function WeddingInvitation() {
                   >
                     <div className="w-full flex justify-center md:justify-start overflow-hidden">
                       <h3 className="text-[3.5rem] sm:text-6xl md:text-[8rem] lg:text-[9rem] font-alex text-gold-gradient leading-none drop-shadow-sm px-2 pb-2">
-                        Niwarthana
+                        Kaveen
                       </h3>
                     </div>
 
@@ -1023,16 +983,16 @@ export default function WeddingInvitation() {
 
                     <div className="w-full flex justify-center md:justify-start overflow-hidden">
                       <h3 className="text-[3.5rem] sm:text-6xl md:text-[8rem] lg:text-[9rem] font-alex text-gold-gradient leading-none drop-shadow-sm px-2 pt-2">
-                        Thenuka
+                        Samithri
                       </h3>
                     </div>
 
                     <div className="pt-6 md:pt-8 w-full">
                       <p className="font-montserrat text-[8px] md:text-[11px] tracking-[0.2em] text-slate-500 uppercase font-bold text-center md:text-left leading-relaxed px-2">
-                        Loving Daughter of Mr. Chaminda & Mrs. Niluka
+                        Loving Son of Mr. Gunathilaka & Mrs. Gunathilaka
                       </p>
                       <p className="font-montserrat text-[8px] md:text-[11px] tracking-[0.2em] text-slate-500 uppercase font-bold text-center md:text-left leading-relaxed px-2">
-                        Loving Son of Mr. Ananda & Mrs. Manjula
+                        with his bride Samithri DAUGHTER OF MR & MRS RODRIGO
                       </p>
                     </div>
                   </motion.div>
@@ -1045,79 +1005,178 @@ export default function WeddingInvitation() {
             <CountdownTimer />
 
             <section className="relative py-24 md:py-36 bg-white overflow-hidden">
-              <div className="absolute inset-0 opacity-[0.03] bg-[url('https://www.transparenttextures.com/patterns/natural-paper.png')] pointer-events-none" />
+              {/* Decorative background glow */}
+              <motion.div
+                animate={{
+                  opacity: [0.3, 0.5, 0.3],
+                }}
+                transition={{
+                  duration: 6,
+                  repeat: Infinity,
+                  ease: 'easeInOut',
+                }}
+                className="absolute top-20 right-20 w-64 h-64 rounded-full bg-[#d4af37]/10 blur-3xl"
+              />
 
-              <div className="container mx-auto px-6 max-w-6xl relative z-10">
-                <div className="grid lg:grid-cols-2 gap-20 items-center">
+              <div className="max-w-6xl mx-auto px-6 relative z-10">
+                {/* Section Title */}
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.8 }}
+                  className="text-center mb-20"
+                >
+                  <h2 className="text-4xl md:text-6xl font-cinzel font-bold text-[#991b1b] mb-4 uppercase tracking-widest">Find Us Here</h2>
+                  <div className="w-24 h-[1px] bg-[#d4af37] mx-auto" />
+                </motion.div>
+
+                <div className="grid lg:grid-cols-2 gap-16 items-center">
+                  {/* Map Section */}
                   <motion.div
                     initial={{ opacity: 0, x: -30 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
-                    className="space-y-12"
+                    transition={{ duration: 1.2 }}
+                    className="relative rounded-[2rem] overflow-hidden border border-[#d4af37]/30 aspect-square md:aspect-video lg:aspect-square shadow-2xl group"
                   >
-                    <div className="space-y-4">
-                      <div className="flex items-center gap-4 mb-2">
-                        <div className="w-12 h-[1px] bg-[#045e54]" />
-                        <span className="text-[#C9A227]">✦</span>
-                        <span className="text-[#045e54] font-bold uppercase tracking-[0.4em] text-[10px]">
-                          T H E | V E N U E
-                        </span>
-                      </div>
-                      <h2 className="font-cinzel text-[2.5rem] md:text-[4rem] text-[#045e54] leading-tight tracking-widest font-bold uppercase">
-                        Saminro Grand Palace
-                      </h2>
-                      <p className="font-playball text-3xl md:text-5xl text-[#045e54] italic mt-2">
-                        MAKOLA
-                      </p>
-                    </div>
+                    <iframe
+                      src="https://maps.google.com/maps?q=Tranquil%20Hotel,%20Weliweriya&t=&z=16&ie=UTF8&iwloc=&output=embed"
+                      width="100%"
+                      height="100%"
+                      style={{ border: 0 }}
+                      allowFullScreen
+                      loading="lazy"
+                      referrerPolicy="no-referrer-when-downgrade"
+                      className="w-full h-full grayscale-[0.2] contrast-110 opacity-90 group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-1000"
+                    />
 
-                    <div className="space-y-8 pl-6 border-l border-[#48b0a3]/40">
-                      <div className="flex items-start gap-4">
-                        <MapPin className="w-5 h-5 text-[#045e54] mt-1 shrink-0" />
-                        <p className="text-lg md:text-xl text-[#045e54] font-cinzel leading-relaxed tracking-wide uppercase">
-                          Saminro Grand Palace, Makola.
-                        </p>
-                      </div>
-                      <p className="text-[#045e54]/70 text-sm md:text-base tracking-widest uppercase font-light leading-loose">
-                        (Poruwa Ceremony at 9.40 AM) FRIDAY, TH 15 MAY 2026. From 9.30 AM to 4.00 PM.
-                      </p>
-                    </div>
+                    {/* Animated Border Overlay */}
+                    <motion.div
+                      animate={{
+                        boxShadow: [
+                          'inset 0 0 40px rgba(212, 175, 55, 0.1)',
+                          'inset 0 0 80px rgba(212, 175, 55, 0.2)',
+                          'inset 0 0 40px rgba(212, 175, 55, 0.1)',
+                        ],
+                      }}
+                      transition={{
+                        duration: 4,
+                        repeat: Infinity,
+                        ease: 'easeInOut',
+                      }}
+                      className="absolute inset-0 rounded-[2rem] pointer-events-none"
+                    />
+                  </motion.div>
 
-                    <div className="flex flex-col sm:flex-row gap-4">
-                      <button
-                        onClick={() =>
-                          window.open("https://www.google.com/maps/search/?api=1&query=Saminro+Grand+Palace+Makola", "_blank")
-                        }
-                        className="group relative inline-flex items-center justify-center gap-4 px-10 py-5 bg-[#045e54] text-white text-[10px] md:text-xs font-bold uppercase tracking-[0.3em] overflow-hidden transition-all hover:bg-[#034d44]"
+                  {/* Contact Information */}
+                  <div className="flex flex-col justify-center space-y-10">
+                    {[
+                      {
+                        icon: MapPin,
+                        title: 'Venue',
+                        details: ['Tranquil Hotel', 'Weliweriya, Sri Lanka'],
+                      },
+                      {
+                        icon: Stars,
+                        title: 'Event Time',
+                        details: ['May 15th 2026', '5.00 P.M. onwards'],
+                      },
+                      {
+                        icon: MailOpen,
+                        title: 'RSVP Info',
+                        details: ['Kaveen-0776688267', 'Samithri-0759490390'],
+                      },
+                    ].map((info, idx) => {
+                      const Icon = info.icon;
+                      return (
+                        <motion.div
+                          key={idx}
+                          initial={{ opacity: 0, x: 30 }}
+                          whileInView={{ opacity: 1, x: 0 }}
+                          viewport={{ once: true }}
+                          transition={{ duration: 0.8, delay: idx * 0.2 }}
+                          className="space-y-4 group"
+                        >
+                          {/* Icon and Title */}
+                          <div className="flex items-center gap-6">
+                            <motion.div
+                              animate={{
+                                y: [0, -5, 0],
+                              }}
+                              transition={{
+                                duration: 3,
+                                repeat: Infinity,
+                                ease: 'easeInOut',
+                                delay: idx * 0.5
+                              }}
+                              className="p-4 bg-[#991b1b]/5 rounded-2xl border border-[#991b1b]/10 group-hover:bg-[#991b1b]/10 transition-colors"
+                            >
+                              <Icon className="w-6 h-6 text-[#991b1b]" />
+                            </motion.div>
+                            <h3 className="text-2xl md:text-3xl font-cinzel font-bold text-[#991b1b] tracking-wide">
+                              {info.title}
+                            </h3>
+                          </div>
+
+                          {/* Details */}
+                          <div className="ml-20 space-y-2">
+                            {info.details.map((detail, detailIdx) => (
+                              <p key={detailIdx} className="text-slate-600 font-montserrat font-medium tracking-widest text-sm md:text-base">
+                                {detail}
+                              </p>
+                            ))}
+                          </div>
+
+                          {/* Accent Line */}
+                          <motion.div
+                            initial={{ scaleX: 0 }}
+                            whileInView={{ scaleX: 1 }}
+                            viewport={{ once: true }}
+                            transition={{
+                              duration: 0.8,
+                              delay: 0.3 + idx * 0.2,
+                            }}
+                            className="h-[1px] w-16 bg-[#d4af37]/40 origin-left ml-20"
+                          />
+                        </motion.div>
+                      );
+                    })}
+
+                    {/* Directions Button */}
+                    <motion.div
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.8, delay: 0.6 }}
+                      className="pt-6 ml-20"
+                    >
+                      <motion.button
+                        whileHover={{ scale: 1.02, backgroundColor: '#991b1b', color: '#ffffff' }}
+                        whileTap={{ scale: 0.98 }}
+                        onClick={() => window.open("https://www.google.com/maps/search/?api=1&query=Tranquil+Hotel+Weliweriya", "_blank")}
+                        className="inline-flex items-center gap-3 py-4 px-10 border-2 border-[#991b1b] text-[#991b1b] font-bold text-xs uppercase tracking-[0.3em] rounded-full transition-all duration-300"
                       >
-                        <MapPin className="w-4 h-4 transition-transform group-hover:-translate-y-1" />
+                        <MapPin size={16} />
                         Get Directions
-                      </button>
-
-                    </div>
-                  </motion.div>
-
-                  <motion.div
-                    initial={{ opacity: 0, y: 40 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    className="relative w-full aspect-[3/4] max-w-[450px] mx-auto bg-white p-3 shadow-[0_40px_80px_-20px_rgba(135,147,122,0.2)] border border-[#48b0a3]/50"
-                  >
-                    <div className="absolute inset-2 border-[0.5px] border-[#045e54]/30 pointer-events-none z-20" />
-                    <div className="w-full h-full overflow-hidden bg-white relative">
-                      <iframe
-                        src="https://maps.google.com/maps?q=Saminro%20Grand%20Palace,%20Makola&t=&z=16&ie=UTF8&iwloc=&output=embed"
-                        width="100%"
-                        height="100%"
-                        style={{ border: 0 }}
-                        allowFullScreen
-                        loading="lazy"
-                        referrerPolicy="no-referrer-when-downgrade"
-                        className="w-full h-full grayscale-[0.8] contrast-110 sepia-[0.3] opacity-80 hover:opacity-100 hover:grayscale-0 transition-all duration-1000"
-                      />
-                    </div>
-                  </motion.div>
+                      </motion.button>
+                    </motion.div>
+                  </div>
                 </div>
+
+                {/* Additional Info */}
+                <motion.div
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.8, delay: 0.5 }}
+                  className="mt-20 p-10 bg-[#fdfaf5] border-l-4 border-[#991b1b] rounded-2xl text-center shadow-sm"
+                >
+                  <p className="text-slate-700 font-montserrat font-medium leading-relaxed max-w-3xl mx-auto">
+                    Tranquil Hotel Weliweriya offers a serene and elegant setting for our celebration. 
+                    Ample parking is available on-site for all guests.
+                  </p>
+                </motion.div>
               </div>
             </section>
 
@@ -1184,7 +1243,7 @@ export default function WeddingInvitation() {
 
                     <div className="w-full flex flex-col items-center mt-6 relative z-10 px-2 md:px-6">
                       <p className="font-montserrat text-[10px] md:text-[11px] tracking-[0.2em] text-slate-500 uppercase font-medium mb-2 text-center leading-relaxed">
-                        RSVP - Chaminda 077 909 0515 | Thenuka 076 850 4398
+                        RSVP (WhatsApp Only) - Kaveen-0776688267 | Samithri-0759490390
                       </p>
 
                       <div className="flex items-center justify-center gap-4 w-full mb-8">
@@ -1279,7 +1338,7 @@ export default function WeddingInvitation() {
 
                         {(rsvpStatus === "success" || rsvpStatus === "error") && (
                           <p
-                            className={`text-[10px] text-center font-semibold tracking-widest uppercase mt-4 ${rsvpStatus === "success" ? "text-emerald-700" : "text-red-500"
+                            className={`text-[10px] text-center font-semibold tracking-widest uppercase mt-4 ${rsvpStatus === "success" ? "text-red-700" : "text-red-500"
                               }`}
                           >
                             {rsvpStatus === "success"
@@ -1305,7 +1364,7 @@ export default function WeddingInvitation() {
               </div>
             </section>
 
-            <div className="relative bg-[#48b0a3]/10">
+            <div className="relative bg-[#f87171]/10">
               <div className="absolute inset-0 opacity-[0.03] bg-[url('https://www.transparenttextures.com/patterns/natural-paper.png')] pointer-events-none" />
 
               <section className="relative py-24 md:py-36 flex flex-col items-center overflow-hidden">
@@ -1316,27 +1375,27 @@ export default function WeddingInvitation() {
                     viewport={{ once: true }}
                     className="flex flex-col items-center"
                   >
-                    <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-[#045e54]/10 mb-8 mt-4 shadow-sm border border-[#045e54]/20">
-                      <Sparkles className="w-8 h-8 text-[#045e54]" />
+                    <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-[#991b1b]/10 mb-8 mt-4 shadow-sm border border-[#991b1b]/20">
+                      <Sparkles className="w-8 h-8 text-[#991b1b]" />
                     </div>
 
-                    <h2 className="font-script text-[4.5rem] sm:text-[5rem] md:text-[7rem] text-[#045e54] mb-6 drop-shadow-sm leading-none">
+                    <h2 className="font-script text-[4.5rem] sm:text-[5rem] md:text-[7rem] text-[#991b1b] mb-6 drop-shadow-sm leading-none">
                       Best Wishes
                     </h2>
-                    <div className="h-px w-24 bg-[#48b0a3] mb-8" />
+                    <div className="h-px w-24 bg-[#f87171] mb-8" />
 
-                    <p className="text-[#045e54] text-sm md:text-lg leading-relaxed max-w-xl mx-auto mb-16 font-serif tracking-[0.1em] px-4 uppercase font-bold">
+                    <p className="text-[#991b1b] text-sm md:text-lg leading-relaxed max-w-xl mx-auto mb-16 font-serif tracking-[0.1em] px-4 uppercase font-bold">
                       Your presence at our wedding is the greatest gift of all. However, if you
                       wish to honor us with a message, we would be delighted to read it!
                     </p>
 
-                    <div className="w-full max-w-2xl mx-auto bg-white p-8 md:p-14 shadow-[0_30px_70px_-15px_rgba(6,78,59,0.1)] border border-[#48b0a3]/50 relative group card-marble">
+                    <div className="w-full max-w-2xl mx-auto bg-white p-8 md:p-14 shadow-[0_30px_70px_-15px_rgba(127,29,29,0.1)] border border-[#f87171]/50 relative group card-marble">
                       <div className="absolute inset-0 gold-foil-edge opacity-20 pointer-events-none" />
-                      <div className="absolute inset-2 border-[0.5px] border-[#045e54]/20 pointer-events-none transition-colors duration-700" />
+                      <div className="absolute inset-2 border-[0.5px] border-[#991b1b]/20 pointer-events-none transition-colors duration-700" />
 
                       <form className="space-y-12 text-left relative z-10" onSubmit={handleWishSubmit}>
                         <div className="space-y-4">
-                          <label className="text-[10px] uppercase tracking-[0.4em] font-bold text-[#045e54]/40">
+                          <label className="text-[10px] uppercase tracking-[0.4em] font-bold text-[#991b1b]/40">
                             From
                           </label>
                           <input
@@ -1347,12 +1406,12 @@ export default function WeddingInvitation() {
                               setWishStatus("idle");
                               setWishForm((prev) => ({ ...prev, name: e.target.value }));
                             }}
-                            className="w-full bg-transparent border-b border-[#48b0a3]/40 px-0 py-4 text-[#045e54] placeholder:text-[#48b0a3]/30 focus:outline-none focus:border-[#045e54] transition-all font-cinzel text-lg tracking-widest"
+                            className="w-full bg-transparent border-b border-[#f87171]/40 px-0 py-4 text-[#991b1b] placeholder:text-[#f87171]/30 focus:outline-none focus:border-[#991b1b] transition-all font-cinzel text-lg tracking-widest"
                             required
                           />
                         </div>
                         <div className="space-y-4">
-                          <label className="text-[10px] uppercase tracking-[0.4em] font-bold text-[#045e54]/40">
+                          <label className="text-[10px] uppercase tracking-[0.4em] font-bold text-[#991b1b]/40">
                             Message
                           </label>
                           <textarea
@@ -1363,13 +1422,13 @@ export default function WeddingInvitation() {
                               setWishStatus("idle");
                               setWishForm((prev) => ({ ...prev, message: e.target.value }));
                             }}
-                            className="w-full bg-transparent border-b border-[#48b0a3]/40 px-0 py-4 text-[#045e54] placeholder:text-[#48b0a3]/30 focus:outline-none focus:border-[#045e54] transition-all font-cinzel text-lg tracking-widest resize-none"
+                            className="w-full bg-transparent border-b border-[#f87171]/40 px-0 py-4 text-[#991b1b] placeholder:text-[#f87171]/30 focus:outline-none focus:border-[#991b1b] transition-all font-cinzel text-lg tracking-widest resize-none"
                             required
                           />
                         </div>
                         {(wishStatus === "success" || wishStatus === "error") && (
                           <p
-                            className={`text-[10px] text-center font-semibold ${wishStatus === "success" ? "text-emerald-700" : "text-red-500"
+                            className={`text-[10px] text-center font-semibold ${wishStatus === "success" ? "text-red-700" : "text-red-500"
                               }`}
                           >
                             {wishStatus === "success"
@@ -1381,7 +1440,7 @@ export default function WeddingInvitation() {
                           <button
                             type="submit"
                             disabled={wishStatus === "sending"}
-                            className="bg-[#045e54] text-white px-12 py-5 font-bold uppercase tracking-[0.4em] text-[10px] hover:bg-[#034d44] transition-all duration-300 shadow-md disabled:opacity-70"
+                            className="bg-[#991b1b] text-white px-12 py-5 font-bold uppercase tracking-[0.4em] text-[10px] hover:bg-[#7f1d1d] transition-all duration-300 shadow-md disabled:opacity-70"
                           >
                             {wishStatus === "sending" ? "Sending..." : "Send Wishes"}
                           </button>
@@ -1392,7 +1451,7 @@ export default function WeddingInvitation() {
                 </div>
               </section>
 
-              <footer className="relative py-24 md:py-32 bg-marble-emerald w-full flex flex-col items-center overflow-hidden z-20">
+              <footer className="relative py-24 md:py-32 bg-marble-red w-full flex flex-col items-center overflow-hidden z-20">
                 {/* Subtle vignette over the deep green */}
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(0,0,0,0.6)_100%)] pointer-events-none z-0"></div>
 
@@ -1420,23 +1479,23 @@ export default function WeddingInvitation() {
 
                     <div className="flex flex-col md:flex-row items-center justify-center gap-3 md:gap-6 mt-4">
                       <h2 className="font-alex text-5xl md:text-7xl text-gold-gradient py-2 drop-shadow-[0_2px_8px_rgba(0,0,0,0.6)] leading-none">
-                        Niwarthana
+                        Kaveen
                       </h2>
-                      <span className="font-serif text-3xl md:text-5xl text-[#d4af37] italic opacity-80 drop-shadow-md pb-2">&</span>
+                      <span className="font-serif text-3xl md:text-5xl text-[#d4af37] italic opacity-80 drop-shadow-md pb-2">&amp;</span>
                       <h2 className="font-alex text-5xl md:text-7xl text-gold-gradient py-2 drop-shadow-[0_2px_8px_rgba(0,0,0,0.6)] leading-none">
-                        Thenuka
+                        Samithri
                       </h2>
                     </div>
                   </motion.div>
 
                   <div className="mt-20 pt-8 border-t-[0.5px] border-[#d4af37]/30 w-full max-w-xs md:max-w-md flex flex-col items-center gap-4">
                     <p className="text-[8px] md:text-[10px] uppercase tracking-[0.4em] md:tracking-[0.6em] text-[#f7e7ce]/50 font-bold leading-relaxed flex flex-col md:flex-row items-center gap-2 md:gap-4">
-                      <span>© 2026 Niwarthana & Thenuka</span>
+                      <span>© 2026 Kaveen &amp; Samithri</span>
                       <span className="hidden md:inline text-[#d4af37]/30">|</span>
                       <span>All Rights Reserved</span>
                     </p>
                     <a
-                      href="https://wa.me/94707819074"
+                      href="https://wa.me/94776688267"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-[9px] tracking-[0.3em] text-[#d4af37]/60 hover:text-[#d4af37] transition-all uppercase font-medium flex items-center gap-2"
@@ -1471,7 +1530,7 @@ export default function WeddingInvitation() {
         onClick={() => handleSoundToggle()}
         aria-pressed={musicAudible}
         aria-label={musicAudible ? "Mute background music" : "Unmute background music"}
-        className="fixed bottom-6 left-6 z-[120] flex h-14 w-14 items-center justify-center rounded-full border-2 border-[#045e54] bg-white/95 text-[#045e54] shadow-[0_0_0_4px_rgba(197,160,89,0.2),0_10px_36px_-6px_rgba(135,147,122,0.45)] backdrop-blur-md touch-manipulation transition-[transform,box-shadow] hover:scale-[1.05] hover:shadow-[0_0_0_5px_rgba(197,160,89,0.28),0_14px_44px_-6px_rgba(135,147,122,0.5)] active:scale-[0.96] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#045e54] focus-visible:ring-offset-2 focus-visible:ring-offset-[#fdfaf5]"
+        className="fixed bottom-6 left-6 z-[120] flex h-14 w-14 items-center justify-center rounded-full border-2 border-[#991b1b] bg-white/95 text-[#991b1b] shadow-[0_0_0_4px_rgba(185,28,28,0.2),0_10px_36px_-6px_rgba(127,29,29,0.45)] backdrop-blur-md touch-manipulation transition-[transform,box-shadow] hover:scale-[1.05] hover:shadow-[0_0_0_5px_rgba(185,28,28,0.28),0_14px_44px_-6px_rgba(127,29,29,0.5)] active:scale-[0.96] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#991b1b] focus-visible:ring-offset-2 focus-visible:ring-offset-[#fdfaf5]"
       >
         {musicAudible ? <Volume2 className="h-6 w-6" strokeWidth={2} /> : <VolumeX className="h-6 w-6" strokeWidth={2} />}
       </motion.button>
@@ -1490,10 +1549,10 @@ export default function WeddingInvitation() {
           width: 8px;
         }
         ::-webkit-scrollbar-track {
-          background: #48b0a333;
+          background: #f8717133;
         }
         ::-webkit-scrollbar-thumb {
-          background: #045e5466;
+          background: #991b1b66;
           border-radius: 10px;
         }
       `,
@@ -1605,7 +1664,7 @@ function AdminPanel() {
 
         <button
           onClick={generateLink}
-          className="w-full bg-[#045e54] text-white py-3 rounded-xl font-bold text-[10px] tracking-widest uppercase hover:bg-[#034d44] transition-all"
+          className="w-full bg-[#991b1b] text-white py-3 rounded-xl font-bold text-[10px] tracking-widest uppercase hover:bg-[#7f1d1d] transition-all"
         >
           Generate Personalized Link
         </button>

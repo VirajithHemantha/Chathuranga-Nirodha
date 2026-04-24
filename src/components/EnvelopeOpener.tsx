@@ -1,4 +1,4 @@
-﻿import React, { useState } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 interface EnvelopeOpenerProps {
@@ -9,6 +9,11 @@ export default function EnvelopeOpener({ onOpen }: EnvelopeOpenerProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [showContent, setShowContent] = useState(false);
   const [isAnimating, setIsAnimating] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   const handleEnvelopeClick = () => {
     if (isAnimating || isOpen) return;
@@ -22,22 +27,28 @@ export default function EnvelopeOpener({ onOpen }: EnvelopeOpenerProps) {
     }, 2600);
   };
 
-  const petals = Array.from({ length: 16 }).map((_, i) => ({
-    id: i,
-    left: `${Math.random() * 100}%`,
-    delay: Math.random() * 2.5,
-    duration: 10 + Math.random() * 8,
-    scale: 0.5 + Math.random() * 0.9,
-    drift: Math.random() * 120 - 60,
-  }));
+  const petals = useMemo(() => {
+    if (!isMounted) return [];
+    return Array.from({ length: 16 }).map((_, i) => ({
+      id: i,
+      left: `${Math.random() * 100}%`,
+      delay: Math.random() * 2.5,
+      duration: 10 + Math.random() * 8,
+      scale: 0.5 + Math.random() * 0.9,
+      drift: Math.random() * 120 - 60,
+    }));
+  }, [isMounted]);
 
-  const sparkles = Array.from({ length: 18 }).map((_, i) => ({
-    id: i,
-    left: `${Math.random() * 100}%`,
-    top: `${Math.random() * 100}%`,
-    delay: Math.random() * 3,
-    duration: 3 + Math.random() * 3,
-  }));
+  const sparkles = useMemo(() => {
+    if (!isMounted) return [];
+    return Array.from({ length: 18 }).map((_, i) => ({
+      id: i,
+      left: `${Math.random() * 100}%`,
+      top: `${Math.random() * 100}%`,
+      delay: Math.random() * 3,
+      duration: 3 + Math.random() * 3,
+    }));
+  }, [isMounted]);
 
   return (
     <AnimatePresence mode="wait">
@@ -52,7 +63,7 @@ export default function EnvelopeOpener({ onOpen }: EnvelopeOpenerProps) {
           className="fixed inset-0 z-50 overflow-hidden"
         >
           {/* Background */}
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(16,185,129,0.08),transparent_35%),linear-gradient(135deg,#023832_0%,#012b26_38%,#011f1a_65%,#001410_100%)]" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(185,28,28,0.08),transparent_35%),linear-gradient(135deg,#5a0000_0%,#3d0000_38%,#2d0000_65%,#1a0000_100%)]" />
 
           {/* Soft ambient glow */}
           <motion.div
@@ -159,7 +170,7 @@ export default function EnvelopeOpener({ onOpen }: EnvelopeOpenerProps) {
                 }}
               >
                 <div
-                  className="h-5 w-3 rounded-full bg-gradient-to-b from-[#b7e4c7] via-[#2d6a4f] to-[#012b26] shadow-[0_0_14px_rgba(183,228,199,0.15)]"
+                  className="h-5 w-3 rounded-full bg-gradient-to-b from-[#fee2e2] via-[#dc2626] to-[#7f1d1d] shadow-[0_0_14px_rgba(254,226,226,0.18)]"
                   style={{
                     transform: `scale(${petal.scale}) rotate(18deg)`,
                     borderRadius: '70% 30% 70% 30% / 70% 30% 70% 30%',
@@ -333,10 +344,10 @@ export default function EnvelopeOpener({ onOpen }: EnvelopeOpenerProps) {
                       transition={{ duration: 0.35 }}
                       className="translate-y-4"
                     >
-                      <h3 className="font-serif text-[1.7rem] tracking-[0.14em] text-[#064e3b] drop-shadow-[0_2px_8px_rgba(0,0,0,0.18)] flex items-center justify-center gap-4 sm:gap-6">
-                        <span>T</span>
+                    <h3 className="font-serif text-[1.7rem] tracking-[0.14em] text-[#991b1b] drop-shadow-[0_2px_8px_rgba(0,0,0,0.18)] flex items-center justify-center gap-4 sm:gap-6 uppercase">
+                        <span>K</span>
                         <span aria-hidden="true">&amp;</span>
-                        <span>N</span>
+                        <span>S</span>
                       </h3>
                       <div className="mt-4 flex items-center justify-center gap-3">
                         <span className="h-px w-10 bg-[#C9A227]/50" />
@@ -354,9 +365,9 @@ export default function EnvelopeOpener({ onOpen }: EnvelopeOpenerProps) {
                       repeat: !isOpen ? Infinity : 0,
                       ease: 'easeInOut',
                     }}
-                    className="absolute left-1/2 top-[54%] z-20 flex h-16 w-16 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-[#f2d89c]/40 bg-[radial-gradient(circle_at_30%_30%,#10b981_0%,#023832_55%,#011f1a_100%)] shadow-[0_10px_30px_rgba(1,31,26,0.45)]"
+                    className="absolute left-1/2 top-[54%] z-20 flex h-16 w-16 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-[#f2d89c]/40 bg-[radial-gradient(circle_at_30%_30%,#dc2626_0%,#991b1b_55%,#7f1d1d_100%)] shadow-[0_10px_30px_rgba(127,29,29,0.45)]"
                   >
-                    <span className="font-serif text-lg text-[#f5e6c8]">T ✦ N</span>
+                    <span className="font-serif text-lg text-[#f5e6c8]">K ✦ S</span>
                   </motion.div>
 
                   {/* Hover sheen */}
@@ -394,7 +405,7 @@ export default function EnvelopeOpener({ onOpen }: EnvelopeOpenerProps) {
                     {/* Card frame */}
                     <div className="absolute inset-3 rounded-[18px] border border-[#C9A227]/25" />
                     <div className="absolute left-1/2 top-4 h-8 w-8 -translate-x-1/2 rounded-full border border-[#C9A227]/50 bg-white/70 text-center text-[10px] leading-8 text-[#8c6a16]">
-                      TN
+                      KS
                     </div>
 
                     {/* Card ornament */}
@@ -404,7 +415,7 @@ export default function EnvelopeOpener({ onOpen }: EnvelopeOpenerProps) {
                           TOGETHER WE REQUEST THE HONOUR OF YOUR PRESENCE
                         </p>
                         <p className="text-[9px] leading-5 text-[#6a4d0d] uppercase">
-                          TO CELEBRATE THE WEDDING OF THEIR CHILDREN
+                          TO CELEBRATE THE HOMECOMING OF THEIR SON
                         </p>
                       </div>
 
@@ -414,16 +425,16 @@ export default function EnvelopeOpener({ onOpen }: EnvelopeOpenerProps) {
                         <span className="h-px w-10 bg-[#C9A227]/45" />
                       </div>
 
-                      <h2 className="mt-5 font-serif text-4xl font-light tracking-[0.08em] text-[#064e3b]">
-                        NIWARTHANA
+                      <h2 className="mt-5 font-serif text-4xl font-light tracking-[0.08em] text-[#991b1b] uppercase">
+                        KAVEEN
                       </h2>
-                      <p className="mt-1 font-serif text-lg italic text-[#b08a1f]">&</p>
-                      <h2 className="font-serif text-4xl font-light tracking-[0.08em] text-[#064e3b]">
-                        THENUKA
+                      <p className="mt-1 font-serif text-lg italic text-[#b08a1f]">&amp;</p>
+                      <h2 className="font-serif text-4xl font-light tracking-[0.08em] text-[#991b1b] uppercase">
+                        SAMITHRI
                       </h2>
 
                       <p className="mx-auto mt-5 max-w-[240px] text-sm leading-7 text-[#5f5146]">
-                        (Poruwa Ceremony at 9.40 AM)
+                        (Homecoming Ceremony at 5.00 PM)
                       </p>
 
                       <div className="mt-6 flex items-center justify-center gap-3">
