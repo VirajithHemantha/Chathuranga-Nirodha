@@ -425,11 +425,11 @@ export default function EnvelopeOpener({ onOpen }: EnvelopeOpenerProps) {
                         <span className="h-px w-10 bg-[#C9A227]/45" />
                       </div>
 
-                      <h2 className="mt-5 font-serif text-4xl font-light tracking-[0.08em] text-[#991b1b] uppercase">
+                      <h2 className="mt-5 font-serif text-4xl font-light tracking-[0.08em] text-[#3d0000] uppercase">
                         KAVEEN
                       </h2>
-                      <p className="mt-1 font-serif text-lg italic text-[#b08a1f]">&amp;</p>
-                      <h2 className="font-serif text-4xl font-light tracking-[0.08em] text-[#991b1b] uppercase">
+                      <p className="mt-1 font-serif text-lg italic text-[#3d0000]">&amp;</p>
+                      <h2 className="font-serif text-4xl font-light tracking-[0.08em] text-[#3d0000] uppercase">
                         SAMITHRI
                       </h2>
 

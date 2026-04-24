@@ -804,19 +804,19 @@ export default function WeddingInvitation() {
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.6 }}
-                  className="text-center font-montserrat text-[9px] font-bold uppercase tracking-[0.4em] text-[#d4af37] sm:text-[10px]"
+                  className="text-center font-montserrat text-[10px] font-bold uppercase tracking-[0.4em] text-[#3d0000] sm:text-[11px]"
                 >
                   Are You Ready?
                 </motion.p>
 
-                <h1 className="mt-6 text-center font-alex text-[2.8rem] leading-[1.1] text-[#5a0000] drop-shadow-[0_2px_8px_rgba(0,0,0,0.05)] sm:text-[4.5rem] md:text-[6.5rem] lg:text-[7.5rem]">
-                  <span className="text-shimmer block">Kaveen</span>
+                <h1 className="mt-6 text-center font-alex text-[2.8rem] leading-[1.1] text-[#3d0000] drop-shadow-[0_2px_8px_rgba(0,0,0,0.05)] sm:text-[4.5rem] md:text-[6.5rem] lg:text-[7.5rem]">
+                  <span className="block">Kaveen</span>
                   <div className="my-2 flex items-center justify-center gap-4">
-                    <div className="h-px w-16 bg-[#5a0000]/20" />
-                    <span className="font-serif text-3xl italic text-[#d4af37] sm:text-4xl md:text-5xl">&amp;</span>
-                    <div className="h-px w-16 bg-[#5a0000]/20" />
+                    <div className="h-px w-16 bg-[#3d0000]/20" />
+                    <span className="font-serif text-3xl italic text-[#3d0000] sm:text-4xl md:text-5xl">&amp;</span>
+                    <div className="h-px w-16 bg-[#3d0000]/20" />
                   </div>
-                  <span className="text-shimmer block">Samithri</span>
+                  <span className="block">Samithri</span>
                 </h1>
 
                 <motion.div
@@ -825,14 +825,14 @@ export default function WeddingInvitation() {
                   transition={{ delay: 1, duration: 1 }}
                   className="mt-8 mb-10 text-center"
                 >
-                  <p className="font-cinzel text-xl text-[#5a0000] tracking-[0.2em]">MAY 15 | 2026</p>
+                  <p className="font-cinzel text-xl text-[#3d0000] tracking-[0.2em]">MAY 15 | 2026</p>
                 </motion.div>
 
                 <motion.p
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ delay: 1.2 }}
-                  className="mx-auto max-w-2xl text-center font-montserrat text-[11px] font-medium uppercase tracking-[0.25em] text-slate-600 leading-relaxed sm:text-xs"
+                  className="mx-auto max-w-2xl text-center font-montserrat text-[11px] font-medium uppercase tracking-[0.25em] text-slate-800 leading-relaxed sm:text-xs"
                 >
                   With joyous hearts, we invite you to share in our celebration of love and new beginnings
                 </motion.p>
@@ -916,25 +916,63 @@ export default function WeddingInvitation() {
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  className="flex flex-col items-center mb-16"
+                  className="flex flex-col items-center mb-8 md:mb-16"
                 >
-                  <p className="tracking-[0.4em] md:tracking-[0.7em] text-[#d4af37] text-[9px] md:text-[12px] uppercase font-montserrat font-bold drop-shadow-sm">
-                    MR. &amp; MRS. GUNATHILAKA REQUEST THE HONOUR OF YOUR PRESENCE
+                  <p className="tracking-[0.2em] md:tracking-[0.7em] text-[#d4af37] text-[11px] md:text-[16px] uppercase font-montserrat font-bold drop-shadow-sm">
+                    MR. &amp; MRS. GUNATHILAKA REQUEST THE HONOUR OF THE PRESENCE OF
                   </p>
-                  <p className="text-slate-500 font-serif text-[15px] md:text-[22px] italic tracking-wide mt-6 mb-2 uppercase">
-                    TO CELEBRATE THE HOMECOMING OF THEIR SON
-                  </p>
-                  <div className="pt-4 pb-2 w-full flex justify-center">
-                    <span className="text-[#5a0000] font-alex text-[2.8rem] md:text-6xl block my-2 drop-shadow-sm leading-tight text-center">
-                      {guestName || "MR.& MRS/ MISS/MR/MRS/ FAMILY"}
+                  
+                  <div className="pt-6 pb-4 w-full flex justify-center">
+                    <span className="text-[#3d0000] font-alex text-4xl md:text-6xl block leading-tight text-center">
+                      {guestName || "Our Honored Guest"}
                     </span>
                   </div>
-                  <div className="h-[0.5px] w-24 bg-[#d4af37]/50 mt-6" />
+
+                  <p className="text-slate-500 font-serif text-[13px] md:text-[22px] italic tracking-wide mt-2 mb-2 uppercase">
+                    TO CELEBRATE THE HOMECOMING OF THEIR SON
+                  </p>
+                  <div className="h-[0.5px] w-16 md:w-24 bg-[#d4af37]/50 mt-4" />
                 </motion.div>
 
-                <div className="relative w-full flex flex-col md:flex-row items-center justify-center gap-16 lg:gap-32 mt-4 mb-16">
+                <div className="relative w-full flex flex-col md:flex-row items-center justify-center gap-10 md:gap-16 lg:gap-32 mt-4 mb-10 md:mb-16">
+                  {/* Minimalist Names side */}
+                  <motion.div
+                    initial={{ opacity: 0, x: -30 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 1.2, delay: 0.2 }}
+                    className="flex flex-col items-center md:items-start text-center md:text-left space-y-3 md:space-y-10 z-20 w-full"
+                  >
+                    <div className="w-full flex justify-center md:justify-start overflow-hidden">
+                      <h3 className="text-5xl sm:text-6xl md:text-[8rem] lg:text-[9rem] font-alex text-[#3d0000] leading-none drop-shadow-sm px-2 pb-1">
+                        Kaveen
+                      </h3>
+                    </div>
+
+                    <div className="flex items-center gap-3 w-full justify-center md:justify-start px-4 md:pl-6">
+                      <div className="h-[0.5px] flex-1 max-w-[30px] md:max-w-[40px] bg-[#d4af37]/40" />
+                      <span className="font-serif text-xl md:text-6xl text-slate-800 italic font-light">&</span>
+                      <div className="h-[0.5px] flex-1 max-w-[30px] md:max-w-[40px] bg-[#d4af37]/40" />
+                    </div>
+
+                    <div className="w-full flex justify-center md:justify-start overflow-hidden">
+                      <h3 className="text-5xl sm:text-6xl md:text-[8rem] lg:text-[9rem] font-alex text-[#3d0000] leading-none drop-shadow-sm px-2 pt-1">
+                        Samithri
+                      </h3>
+                    </div>
+
+                    <div className="pt-4 md:pt-8 w-full">
+                      <p className="font-montserrat text-[8px] md:text-[11px] tracking-[0.15em] md:tracking-[0.2em] text-slate-500 uppercase font-bold text-center md:text-left leading-relaxed px-2">
+                        Loving Son of Mr. Gunathilaka & Mrs. Gunathilaka
+                      </p>
+                      <p className="font-montserrat text-[8px] md:text-[11px] tracking-[0.15em] md:tracking-[0.2em] text-slate-500 uppercase font-bold text-center md:text-left leading-relaxed px-2">
+                        with his bride Samithri DAUGHTER OF MR & MRS RODRIGO
+                      </p>
+                    </div>
+                  </motion.div>
+
                   {/* Premium Single Image Layout */}
-                  <div className="relative w-[300px] md:w-[450px] aspect-[3/4] flex-shrink-0 mb-12 md:mb-0">
+                  <div className="relative w-[280px] md:w-[450px] aspect-[3/4] flex-shrink-0 mb-8 md:mb-0">
                     <motion.div
                       initial={{ opacity: 0, scale: 0.95 }}
                       whileInView={{ opacity: 1, scale: 1 }}
@@ -952,50 +990,14 @@ export default function WeddingInvitation() {
                         className="w-full h-full object-cover transition-all duration-1000 group-hover:scale-105"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
-                      
+
                       {/* Decorative frame inner line */}
                       <div className="absolute inset-4 border border-white/30 pointer-events-none rounded-lg" />
                     </motion.div>
-                    
+
                     {/* Background glow ornament */}
                     <div className="absolute -inset-4 bg-[#d4af37]/10 blur-2xl -z-10 rounded-3xl" />
                   </div>
-
-                  {/* Minimalist Names side */}
-                  <motion.div
-                    initial={{ opacity: 0, x: 30 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 1.2, delay: 0.2 }}
-                    className="flex flex-col items-center md:items-start text-center md:text-left space-y-4 md:space-y-10 z-20 w-full"
-                  >
-                    <div className="w-full flex justify-center md:justify-start overflow-hidden">
-                      <h3 className="text-[3.5rem] sm:text-6xl md:text-[8rem] lg:text-[9rem] font-alex text-gold-gradient leading-none drop-shadow-sm px-2 pb-2">
-                        Kaveen
-                      </h3>
-                    </div>
-
-                    <div className="flex items-center gap-4 w-full justify-center md:justify-start px-4 md:pl-6">
-                      <div className="h-[0.5px] flex-1 max-w-[40px] bg-[#d4af37]/40" />
-                      <span className="font-serif text-2xl md:text-6xl text-slate-400 italic font-light">&</span>
-                      <div className="h-[0.5px] flex-1 max-w-[40px] bg-[#d4af37]/40" />
-                    </div>
-
-                    <div className="w-full flex justify-center md:justify-start overflow-hidden">
-                      <h3 className="text-[3.5rem] sm:text-6xl md:text-[8rem] lg:text-[9rem] font-alex text-gold-gradient leading-none drop-shadow-sm px-2 pt-2">
-                        Samithri
-                      </h3>
-                    </div>
-
-                    <div className="pt-6 md:pt-8 w-full">
-                      <p className="font-montserrat text-[8px] md:text-[11px] tracking-[0.2em] text-slate-500 uppercase font-bold text-center md:text-left leading-relaxed px-2">
-                        Loving Son of Mr. Gunathilaka & Mrs. Gunathilaka
-                      </p>
-                      <p className="font-montserrat text-[8px] md:text-[11px] tracking-[0.2em] text-slate-500 uppercase font-bold text-center md:text-left leading-relaxed px-2">
-                        with his bride Samithri DAUGHTER OF MR & MRS RODRIGO
-                      </p>
-                    </div>
-                  </motion.div>
                 </div>
               </div>
             </section>
@@ -1248,7 +1250,7 @@ export default function WeddingInvitation() {
 
                       <div className="flex items-center justify-center gap-4 w-full mb-8">
                         <div className="h-[0.5px] w-full bg-[#d4af37]/40" />
-                        <h3 className="font-alex text-5xl md:text-7xl text-gold-gradient whitespace-nowrap leading-[0.8] drop-shadow-sm px-2">
+                        <h3 className="font-alex text-5xl md:text-7xl text-gold-gradient whitespace-nowrap leading-normal py-2 drop-shadow-sm px-2">
                           R.S.V.P
                         </h3>
                         <div className="h-[0.5px] w-full bg-[#d4af37]/40" />
