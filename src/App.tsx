@@ -628,11 +628,14 @@ export default function WeddingInvitation() {
       throw new Error("Missing VITE_GOOGLE_SCRIPT_URL");
     }
 
+    const { action, ...data } = payload;
+    const urlWithAction = `${googleScriptUrl}${googleScriptUrl.includes('?') ? '&' : '?'}action=${action}`;
+
     try {
-      await fetch(googleScriptUrl, {
+      await fetch(urlWithAction, {
         method: "POST",
         mode: "no-cors",
-        body: new URLSearchParams(payload),
+        body: new URLSearchParams(data),
         headers: {
           "Content-Type": "application/x-www-form-urlencoded",
         },
@@ -921,7 +924,7 @@ export default function WeddingInvitation() {
                   <p className="tracking-[0.2em] md:tracking-[0.7em] text-[#d4af37] text-[11px] md:text-[16px] uppercase font-montserrat font-bold drop-shadow-sm">
                     MR. &amp; MRS. GUNATHILAKA REQUEST THE HONOUR OF THE PRESENCE OF
                   </p>
-                  
+
                   <div className="pt-6 pb-4 w-full flex justify-center">
                     <span className="text-[#3d0000] font-alex text-4xl md:text-6xl block leading-tight text-center">
                       {guestName || "Our Honored Guest"}
@@ -992,7 +995,7 @@ export default function WeddingInvitation() {
                       <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
 
                       {/* Decorative frame inner line */}
-                      <div className="absolute inset-4 border border-white/30 pointer-events-none rounded-lg" />
+                      <div className="absolute inset-[15px] border-[0.5px] border-[#d4af37] pointer-events-none rounded-lg" />
                     </motion.div>
 
                     {/* Background glow ornament */}
@@ -1175,7 +1178,7 @@ export default function WeddingInvitation() {
                   className="mt-20 p-10 bg-[#fdfaf5] border-l-4 border-[#991b1b] rounded-2xl text-center shadow-sm"
                 >
                   <p className="text-slate-700 font-montserrat font-medium leading-relaxed max-w-3xl mx-auto">
-                    Tranquil Hotel Weliweriya offers a serene and elegant setting for our celebration. 
+                    Tranquil Hotel Weliweriya offers a serene and elegant setting for our celebration.
                     Ample parking is available on-site for all guests.
                   </p>
                 </motion.div>

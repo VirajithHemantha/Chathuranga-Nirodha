@@ -2,14 +2,14 @@
  * Google Apps Script Web App for Wedding RSVP + Wishes
  *
  * Spreadsheet:
- * https://docs.google.com/spreadsheets/d/1WsNJdnLeVIX8ZUAcOROukiP27OeIgZbMLfsCT-HU8JE/edit
+ * https://docs.google.com/spreadsheets/d/14_8IkmBvev8P0ehWLbRSars2sgw4Ou3Z7NAW_etQ300/edit
  *
  * Required sheets:
  * - rsvp
  * - wish
  */
 
-const SPREADSHEET_ID = "1WsNJdnLeVIX8ZUAcOROukiP27OeIgZbMLfsCT-HU8JE";
+const SPREADSHEET_ID = "14_8IkmBvev8P0ehWLbRSars2sgw4Ou3Z7NAW_etQ300";
 const RSVP_SHEET_NAME = "rsvp";
 const WISH_SHEET_NAME = "wish";
 
@@ -118,24 +118,44 @@ function ensureHeader_(sheet, headers) {
 }
 
 function parseParams_(e) {
-  const params = Object.assign({}, (e && e.parameter) || {});
+  const params = {};
 
-  if (!(e && e.postData && e.postData.contents)) {
-    return params;
+  // 1. Get simple parameters from URL or form-data (e.parameter)
+  if (e && e.parameter) {
+    Object.keys(e.parameter).forEach(key => {
+      params[key] = e.parameter[key];
+    });
   }
 
-  const contents = String(e.postData.contents || "").trim();
-  if (!contents) {
-    return params;
+  // 2. Fallback to e.parameters if something was missed (multi-value)
+  if (e && e.parameters) {
+    Object.keys(e.parameters).forEach(key => {
+      if (!params[key]) {
+        params[key] = e.parameters[key][0];
+      }
+    });
   }
 
-  if (contents.charAt(0) === "{") {
-    const json = JSON.parse(contents);
-    return Object.assign(params, json);
+  // 3. Handle POST body content if it exists
+  if (e && e.postData && e.postData.contents) {
+    const contents = String(e.postData.contents || "").trim();
+    if (contents) {
+      try {
+        if (contents.charAt(0) === "{" || contents.charAt(0) === "[") {
+          const json = JSON.parse(contents);
+          Object.assign(params, json);
+        } else {
+          // Assume form-encoded if not JSON
+          const parsed = parseFormEncoded_(contents);
+          Object.assign(params, parsed);
+        }
+      } catch (err) {
+        // Ignore parsing errors, keep what we have from e.parameter
+      }
+    }
   }
 
-  const parsed = parseFormEncoded_(contents);
-  return Object.assign(params, parsed);
+  return params;
 }
 
 function parseFormEncoded_(raw) {
