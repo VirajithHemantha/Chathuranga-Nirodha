@@ -13,7 +13,7 @@ import EnvelopeOpener from "./components/EnvelopeOpener";
 
 const brideGroomImage = "/images/ChatGPT Image Apr 24, 2026, 10_27_41 PM.png";
 const secondaryImage = "/images/ChatGPT Image Apr 24, 2026, 10_27_41 PM.png";
-const backgroundMusic = "/ama_anjana_flute.mp3";
+const backgroundMusic = "/bg_music.mp3";
 const googleScriptUrl = import.meta.env.VITE_GOOGLE_SCRIPT_URL?.trim() || "";
 
 /** iOS / Android block unmuted autoplay; iPadOS may report as MacIntel. */
