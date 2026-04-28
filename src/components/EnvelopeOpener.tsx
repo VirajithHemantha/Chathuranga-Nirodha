@@ -21,10 +21,11 @@ export default function EnvelopeOpener({ onOpen }: EnvelopeOpenerProps) {
     setIsAnimating(true);
     setIsOpen(true);
 
+    // Stay for 8.5 seconds total (roughly 7.3 seconds after fully revealed)
     setTimeout(() => {
       setShowContent(true);
       onOpen();
-    }, 2600);
+    }, 8500);
   };
 
   const petals = useMemo(() => {
@@ -288,7 +289,7 @@ export default function EnvelopeOpener({ onOpen }: EnvelopeOpenerProps) {
                     initial={{ rotateX: 0 }}
                     animate={isOpen ? { rotateX: -180 } : { rotateX: 0 }}
                     transition={{
-                      duration: 1.25,
+                      duration: 0.7, // Open quickly as requested
                       ease: [0.22, 1, 0.36, 1],
                     }}
                     className="absolute left-0 top-0 h-[54%] w-full origin-top"
@@ -392,8 +393,8 @@ export default function EnvelopeOpener({ onOpen }: EnvelopeOpenerProps) {
                       : { y: 110, opacity: 0, scale: 0.96 }
                   }
                   transition={{
-                    duration: 1.1,
-                    delay: 0.72,
+                    duration: 0.8, // Speed up reveal
+                    delay: 0.4,   // Start sooner
                     ease: [0.22, 1, 0.36, 1],
                   }}
                   className="pointer-events-none absolute left-1/2 top-[56px] w-[360px] -translate-x-1/2"
@@ -455,7 +456,7 @@ export default function EnvelopeOpener({ onOpen }: EnvelopeOpenerProps) {
               <motion.p
                 initial={{ opacity: 0, y: 10 }}
                 animate={!isOpen ? { opacity: 1, y: 0 } : { opacity: 0, y: -6 }}
-                transition={{ duration: 0.4 }}
+                transition={{ duration: 0.2 }}
                 className="mt-6 text-center text-[11px] uppercase tracking-[0.45em] text-[#f5e6c8]/80"
               >
                 Touch to Unveil
