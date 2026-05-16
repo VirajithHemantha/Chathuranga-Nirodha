@@ -14,7 +14,7 @@ import IntroVideo from "./components/IntroVideo";
 const brideGroomImage = "/images/ChatGPT Image Apr 24, 2026, 10_27_41 PM.png";
 const secondaryImage = "/images/ChatGPT Image Apr 24, 2026, 10_27_41 PM.png";
 const backgroundMusic = "/bg_music.mp3";
-const googleScriptUrl = import.meta.env.VITE_GOOGLE_SCRIPT_URL?.trim() || "";
+const googleScriptUrl = "https://script.google.com/macros/s/AKfycbzrU6Y56jJAZ0e8VmMpD2-wlvWYXFeUApwjgK4JQEgK5M0FbyIHN2adym9I_4K-YPw1Hw/exec";
 
 /** iOS / Android block unmuted autoplay; iPadOS may report as MacIntel. */
 function isLikelyMobileOrTablet() {

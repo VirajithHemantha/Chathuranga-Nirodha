@@ -2,14 +2,14 @@
  * Google Apps Script Web App for Wedding RSVP + Wishes
  *
  * Spreadsheet:
- * https://docs.google.com/spreadsheets/d/14_8IkmBvev8P0ehWLbRSars2sgw4Ou3Z7NAW_etQ300/edit
+ * https://docs.google.com/spreadsheets/d/10zu_YrxK-DuJsZxYtIG5eSnybZ3d-KM6G1L_0cEjfE0/edit?usp=sharing
  *
- * Required sheets:
+ * Automatically creates required sheets and headers if they do not exist:
  * - rsvp
  * - wish
  */
 
-const SPREADSHEET_ID = "14_8IkmBvev8P0ehWLbRSars2sgw4Ou3Z7NAW_etQ300";
+const SPREADSHEET_ID = "10zu_YrxK-DuJsZxYtIG5eSnybZ3d-KM6G1L_0cEjfE0";
 const RSVP_SHEET_NAME = "rsvp";
 const WISH_SHEET_NAME = "wish";
 
@@ -27,7 +27,7 @@ function handleRequest_(e) {
     const action = String(params.action || "").trim().toLowerCase();
 
     if (!action) {
-      return jsonResponse_({ ok: false, message: "Missing action" });
+      return jsonResponse_({ ok: false, message: "Missing action parameter" });
     }
 
     if (action === "rsvp") {
@@ -38,11 +38,11 @@ function handleRequest_(e) {
       return jsonResponse_(saveWish_(params));
     }
 
-    return jsonResponse_({ ok: false, message: "Invalid action" });
+    return jsonResponse_({ ok: false, message: "Invalid action parameter: " + action });
   } catch (error) {
     return jsonResponse_({
       ok: false,
-      message: error && error.message ? error.message : "Unexpected error",
+      message: error && error.message ? error.message : "Unexpected error occurred",
     });
   }
 }
@@ -51,12 +51,12 @@ function saveRsvp_(params) {
   const sheet = getSheet_(RSVP_SHEET_NAME);
 
   ensureHeader_(sheet, [
-    "timestamp",
-    "name",
-    "place",
-    "guests",
-    "attendance",
-    "dietaryNotes",
+    "Timestamp",
+    "Name",
+    "Area / City",
+    "Number of Guests",
+    "Attendance Status",
+    "Dietary Notes",
   ]);
 
   const name = String(params.name || "").trim();
@@ -69,7 +69,7 @@ function saveRsvp_(params) {
     return { ok: false, message: "Name is required" };
   }
 
-  const attendance = attending === "no" ? "Declined" : "Attending";
+  const attendance = attending === "no" ? "Regretfully Declined" : "Delightfully Attending";
 
   sheet.appendRow([
     new Date(),
@@ -80,13 +80,13 @@ function saveRsvp_(params) {
     dietaryNotes,
   ]);
 
-  return { ok: true, message: "RSVP saved" };
+  return { ok: true, message: "RSVP saved successfully" };
 }
 
 function saveWish_(params) {
   const sheet = getSheet_(WISH_SHEET_NAME);
 
-  ensureHeader_(sheet, ["timestamp", "name", "message"]);
+  ensureHeader_(sheet, ["Timestamp", "Guest Name", "Wish / Message"]);
 
   const name = String(params.name || "").trim();
   const message = String(params.message || "").trim();
@@ -97,15 +97,16 @@ function saveWish_(params) {
 
   sheet.appendRow([new Date(), name, message]);
 
-  return { ok: true, message: "Wish saved" };
+  return { ok: true, message: "Wish saved successfully" };
 }
 
 function getSheet_(sheetName) {
   const spreadsheet = SpreadsheetApp.openById(SPREADSHEET_ID);
-  const sheet = spreadsheet.getSheetByName(sheetName);
+  let sheet = spreadsheet.getSheetByName(sheetName);
 
   if (!sheet) {
-    throw new Error("Sheet not found: " + sheetName);
+    // Automatically create the sheet if it doesn't exist
+    sheet = spreadsheet.insertSheet(sheetName);
   }
 
   return sheet;
@@ -114,6 +115,17 @@ function getSheet_(sheetName) {
 function ensureHeader_(sheet, headers) {
   if (sheet.getLastRow() === 0) {
     sheet.appendRow(headers);
+    try {
+      // Format header row for a clean, professional look
+      const headerRange = sheet.getRange(1, 1, 1, headers.length);
+      headerRange.setFontWeight("bold");
+      headerRange.setBackground("#f3f4f6");
+      headerRange.setFontColor("#111827");
+      sheet.setFrozenRows(1);
+      sheet.autoResizeColumns(1, headers.length);
+    } catch (err) {
+      // Ignore formatting errors if any
+    }
   }
 }
 
