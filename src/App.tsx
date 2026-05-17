@@ -883,7 +883,7 @@ export default function WeddingInvitation() {
                         Loving Son of Mr. &amp; Mrs. Bandara
                       </p>
                       <p className="font-montserrat text-[8px] md:text-[11px] tracking-[0.15em] md:tracking-[0.2em] text-slate-500 uppercase font-bold text-center md:text-left leading-relaxed px-2">
-                        with his bride Nirodha DAUGHTER OF MR. &amp; MRS. PRIYADARSHANA
+                        with his bride Nirodha DAUGHTER OF MR. &amp; MRS. JAYASUNDARA
                       </p>
                     </div>
                   </motion.div>
