@@ -418,7 +418,7 @@ function AccommodationModal({ isOpen, onClose }: { isOpen: boolean; onClose: () 
         <div className="p-6 border-b border-slate-100 flex items-center justify-between bg-[#fcfcf0]">
           <div>
             <h2 className="font-cinzel text-xl md:text-2xl text-[#991b1b] font-bold">Accommodation Rates</h2>
-            <p className="text-[10px] uppercase tracking-widest text-[#991b1b] mt-1">Bolgoda Paradise Hotel, Piliyandala</p>
+            <p className="text-[10px] uppercase tracking-widest text-[#991b1b] mt-1">Bolgoda Paradise Inn Hotel, Piliyandala</p>
           </div>
           <button onClick={onClose} className="p-2 hover:bg-slate-100 rounded-full transition-colors">
             <X size={24} className="text-slate-400" />
@@ -994,7 +994,7 @@ export default function WeddingInvitation() {
                       {
                         icon: MapPin,
                         title: 'Venue',
-                        details: ['Bolgoda Paradise Hotel', 'Crystal Atrium, Bolgoda, Piliyandala'],
+                        details: ['Bolgoda Paradise Inn Hotel', 'Garden wedding bliss, Bolgoda, Piliyandala'],
                       },
                       {
                         icon: Stars,
@@ -1087,7 +1087,7 @@ export default function WeddingInvitation() {
                   className="mt-20 p-10 bg-[#fdfaf5] border-l-4 border-[#991b1b] rounded-2xl text-center shadow-sm"
                 >
                   <p className="text-slate-700 font-montserrat font-medium leading-relaxed max-w-3xl mx-auto">
-                    Bolgoda Paradise Hotel Piliyandala offers a serene and elegant setting for our celebration.
+                    Bolgoda Paradise Inn Hotel Piliyandala offers a serene and elegant setting for our celebration.
                     Ample parking is available on-site for all guests.
                   </p>
                 </motion.div>
